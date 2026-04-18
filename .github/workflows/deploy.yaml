@@ -38,8 +38,8 @@ jobs:
 
     - name: Inject Docker credentials into cloud-init
       run: |
-        sed -i "s|\${DOCKER_USERNAME}|${{ secrets.DOCKER_USERNAME }}|g" cloud-init.sh
-        sed -i "s|\${DOCKER_PASSWORD}|${{ secrets.DOCKER_PASSWORD }}|g" cloud-init.sh
+        sed -i "s|\${DOCKER_USERNAME}|${{ secrets.DOCKERHUB_USERNAME }}|g" cloud-init.sh
+        sed -i "s|\${DOCKER_PASSWORD}|${{ secrets.DOCKERHUB_TOKEN }}|g" cloud-init.sh
 
     - name: Launch EC2 instance
       id: ec2
