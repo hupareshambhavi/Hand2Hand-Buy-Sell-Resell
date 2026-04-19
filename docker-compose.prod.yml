@@ -17,7 +17,7 @@ services:
     build:
       context: ./apps
       dockerfile: Dockerfile.backend.dev
-    image: aishwaryaravi456/hand2hand:backend-latest 
+    image: shambhavihupare/hand2hand:backend-latest 
     container_name: backend
     ports:
       - 8000:8000
@@ -39,7 +39,7 @@ services:
     build:
       context: ./apps
       dockerfile: Dockerfile.frontend.prod
-    image: aishwaryaravi456/hand2hand:frontend-latest 
+    image: shambhavihupare/hand2hand:frontend-latest 
     container_name: frontend
     ports:
       - 80:80
