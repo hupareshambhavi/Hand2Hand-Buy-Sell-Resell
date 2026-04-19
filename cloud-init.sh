@@ -41,9 +41,9 @@ services:
       - DB_NAME=mydb
       - DB_USER=user
       - DB_PASSWORD=userpass
-      - DEEPL_API_KEY=a461b88f-328e-4e42-8502-91cf38d820e8:fx
+      - DEEPL_API_KEY=${DEEPL_API_KEY}
       - DJANGO_SETTINGS_MODULE=backend.settings
-      - FERNET_KEY=COEQLU_mXjz0QRbrzM80KZfFd1MReu_uFcsoHi0c7Lk=
+      - FERNET_KEY=${FERNET_KEY}
     depends_on:
       - db
 

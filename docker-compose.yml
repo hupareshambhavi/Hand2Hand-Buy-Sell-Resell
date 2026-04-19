@@ -38,8 +38,8 @@ services:
       - DB_USER=user
       - DB_PASSWORD=userpass
       - SKIP_DB_WAIT=true
-      - DEEPL_API_KEY=a461b88f-328e-4e42-8502-91cf38d820e8:fx
-      - FERNET_KEY=COEQLU_mXjz0QRbrzM80KZfFd1MReu_uFcsoHi0c7Lk=
+      - DEEPL_API_KEY=${DEEPL_API_KEY}
+      - FERNET_KEY=${FERNET_KEY}
     volumes:
       - ./apps/backend:/app/backend         
     depends_on:
