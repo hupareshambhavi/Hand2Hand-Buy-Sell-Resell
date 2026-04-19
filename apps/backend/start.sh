@@ -3,10 +3,14 @@ cd backend
 
 echo "Waiting for database to be ready..."
 
-while ! mysqladmin ping -h "$DB_HOST" --silent; do
-  echo "Database is unavailable - sleeping"
-  sleep 2
-done
+if [ "$SKIP_DB_WAIT" = "True" ] || [ "$SKIP_DB_WAIT" = "true" ]; then
+  echo "Skipping database wait check"
+else
+  while ! mysqladmin ping -h "$DB_HOST" --silent; do
+    echo "Database is unavailable - sleeping"
+    sleep 2
+  done
+fi
 
 echo "Database is up - continuing"
 

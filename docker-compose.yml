@@ -10,6 +10,12 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: userpass
       MYSQL_ROOT_PASSWORD: rootpass
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uuser", "-puserpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
     volumes:
       - mysql_data:/var/lib/mysql
   
@@ -31,12 +37,14 @@ services:
       - DB_NAME=mydb
       - DB_USER=user
       - DB_PASSWORD=userpass
+      - SKIP_DB_WAIT=true
       - DEEPL_API_KEY=a461b88f-328e-4e42-8502-91cf38d820e8:fx
       - FERNET_KEY=COEQLU_mXjz0QRbrzM80KZfFd1MReu_uFcsoHi0c7Lk=
     volumes:
       - ./apps/backend:/app/backend         
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   frontend:
     image: frontend
